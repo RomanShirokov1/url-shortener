@@ -10,7 +10,10 @@ import picocli.CommandLine.Option;
 public class CreateCommand implements Runnable {
   private final CreateLink createLink;
 
-  @Option(names = {"-u", "--url"}, required = true, description = "Original URL")
+  @Option(
+      names = {"-u", "--url"},
+      required = true,
+      description = "Original URL")
   private String url;
 
   public CreateCommand(CreateLink createLink) {

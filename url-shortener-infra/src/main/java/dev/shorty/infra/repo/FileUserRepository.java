@@ -40,7 +40,9 @@ public class FileUserRepository implements UserRepository {
     try {
       Files.createDirectories(filePath.getParent());
       try (OutputStream output = Files.newOutputStream(filePath)) {
-        mapper.writerWithDefaultPrettyPrinter().writeValue(output, new UserRecord(userId.toString()));
+        mapper
+            .writerWithDefaultPrettyPrinter()
+            .writeValue(output, new UserRecord(userId.toString()));
       }
     } catch (IOException e) {
       throw new IllegalStateException("Failed to write user file: " + filePath, e);

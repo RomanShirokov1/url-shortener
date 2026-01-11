@@ -23,8 +23,6 @@ public class GetLinkInfo {
     if (userId.isEmpty()) {
       return Optional.empty();
     }
-    return linkRepository
-        .findByShortCode(shortCode)
-        .filter(link -> link.isOwnedBy(userId.get()));
+    return linkRepository.findByShortCode(shortCode).filter(link -> link.isOwnedBy(userId.get()));
   }
 }

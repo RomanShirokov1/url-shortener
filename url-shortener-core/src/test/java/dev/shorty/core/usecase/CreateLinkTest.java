@@ -20,7 +20,8 @@ class CreateLinkTest {
   void createsUserWhenMissing() {
     InMemoryLinkRepository linkRepository = new InMemoryLinkRepository();
     InMemoryUserRepository userRepository = new InMemoryUserRepository();
-    CreateLink createLink = new CreateLink(new FixedConfig(Duration.ofHours(1), 3), linkRepository, userRepository);
+    CreateLink createLink =
+        new CreateLink(new FixedConfig(Duration.ofHours(1), 3), linkRepository, userRepository);
 
     Link link = createLink.create(URL);
 
@@ -34,7 +35,8 @@ class CreateLinkTest {
     UserId userId = UserId.newId();
     InMemoryLinkRepository linkRepository = new InMemoryLinkRepository();
     InMemoryUserRepository userRepository = new InMemoryUserRepository(userId);
-    CreateLink createLink = new CreateLink(new FixedConfig(Duration.ofHours(1), 3), linkRepository, userRepository);
+    CreateLink createLink =
+        new CreateLink(new FixedConfig(Duration.ofHours(1), 3), linkRepository, userRepository);
 
     Link first = createLink.create(URL);
     Link second = createLink.create(URL);
@@ -48,7 +50,8 @@ class CreateLinkTest {
     UserId userId = UserId.newId();
     InMemoryLinkRepository linkRepository = new InMemoryLinkRepository();
     InMemoryUserRepository userRepository = new InMemoryUserRepository(userId);
-    CreateLink createLink = new CreateLink(new FixedConfig(Duration.ofHours(1), 3), linkRepository, userRepository);
+    CreateLink createLink =
+        new CreateLink(new FixedConfig(Duration.ofHours(1), 3), linkRepository, userRepository);
 
     Link expired =
         new Link(

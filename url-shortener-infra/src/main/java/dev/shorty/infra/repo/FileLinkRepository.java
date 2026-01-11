@@ -34,9 +34,7 @@ public class FileLinkRepository implements LinkRepository {
 
   @Override
   public Optional<Link> findByShortCode(ShortCode shortCode) {
-    return readAll().stream()
-        .filter(link -> link.getShortCode().equals(shortCode))
-        .findFirst();
+    return readAll().stream().filter(link -> link.getShortCode().equals(shortCode)).findFirst();
   }
 
   @Override

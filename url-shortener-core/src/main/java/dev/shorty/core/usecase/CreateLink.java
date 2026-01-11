@@ -17,7 +17,8 @@ public class CreateLink {
   private final LinkRepository linkRepository;
   private final UserRepository userRepository;
 
-  public CreateLink(ConfigPort config, LinkRepository linkRepository, UserRepository userRepository) {
+  public CreateLink(
+      ConfigPort config, LinkRepository linkRepository, UserRepository userRepository) {
     this.config = Objects.requireNonNull(config, "config");
     this.linkRepository = Objects.requireNonNull(linkRepository, "linkRepository");
     this.userRepository = Objects.requireNonNull(userRepository, "userRepository");
@@ -26,12 +27,14 @@ public class CreateLink {
   public Link create(String rawUrl) {
     OriginalUrl originalUrl = OriginalUrl.fromString(rawUrl);
     UserId userId =
-        userRepository.load().orElseGet(
-            () -> {
-              UserId created = UserId.newId();
-              userRepository.save(created);
-              return created;
-            });
+        userRepository
+            .load()
+            .orElseGet(
+                () -> {
+                  UserId created = UserId.newId();
+                  userRepository.save(created);
+                  return created;
+                });
 
     return linkRepository
         .findByUserAndOriginal(userId, originalUrl)
@@ -51,14 +54,7 @@ public class CreateLink {
     ShortCode shortCode = generateUniqueShortCode();
     int maxClicks = config.getDefaultMaxClicks();
     return persist(
-        new Link(
-            userId,
-            originalUrl,
-            shortCode,
-            now,
-            now.plus(config.getLinkTtl()),
-            maxClicks,
-            0));
+        new Link(userId, originalUrl, shortCode, now, now.plus(config.getLinkTtl()), maxClicks, 0));
   }
 
   private ShortCode generateUniqueShortCode() {
