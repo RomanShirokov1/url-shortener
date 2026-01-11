@@ -38,6 +38,7 @@ public class Main implements Runnable {
 
   public static void main(String[] args) {
     Main main = new Main();
+    main.cleanupExpired();
     if (args.length == 0) {
       main.runInteractive();
       return;
