@@ -23,7 +23,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Lint (spotless)
-        run: ./gradlew spotlessCheck
+        run: |
+          chmod +x ./gradlew
+          ./gradlew spotlessCheck
 
       - name: Build and test
-        run: ./gradlew build test
+        run: |
+          chmod +x ./gradlew
+          ./gradlew build test
